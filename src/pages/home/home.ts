@@ -32,9 +32,11 @@ export class HomePage {
     this.auth.authenticate(this.creds).subscribe(
       response => {
         this.auth.successfullLogin(response.headers.get("Authorization"));
-        this.navCtrl.setRoot('CategoriasPage')
+        console.log("Autorizado");
+        this.navCtrl.setRoot('CategoriasPage');
+        console.log("Não foi");
       },
-      error => ({})
+      error => (console.log(error))
     );
   
   }

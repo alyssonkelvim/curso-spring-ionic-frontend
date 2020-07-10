@@ -1,7 +1,7 @@
 import { Observable } from "rxjs/Rx";
 import { Injectable } from "@angular/core";
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { Console } from "@angular/core/src/console";
+
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
