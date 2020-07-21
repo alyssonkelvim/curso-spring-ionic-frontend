@@ -24,6 +24,17 @@ export class HomePage {
     this.menu.swipeEnable(false);
   }
 
+  ionViewDidEnter(){
+    this.auth.refreshToken().subscribe(
+      response => {
+        this.auth.successfullLogin(response.headers.get("Authorization"));
+        console.log("Autorizado");
+        this.navCtrl.setRoot('CategoriasPage');
+      },
+      error => (console.log(error))
+    );
+  }
+
   ionViewDidLeave(){
     this.menu.swipeEnable(true);
   }
@@ -34,7 +45,6 @@ export class HomePage {
         this.auth.successfullLogin(response.headers.get("Authorization"));
         console.log("Autorizado");
         this.navCtrl.setRoot('CategoriasPage');
-        console.log("Não foi");
       },
       error => (console.log(error))
     );
