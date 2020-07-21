@@ -10,10 +10,12 @@
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor Inválido</p>
     <ion-item>
       <ion-label stacked>E-mail*</ion-label>
       <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
+    <p class="danger" *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors" margin-left>Valor Inválido</p>
     <ion-list radio-group formControlName="tipo">
       <ion-list-header>
         Tipo de Cliente
@@ -79,6 +81,6 @@
         <ion-option *ngFor="let cidade of cidades;" [value] = "cidade.id" >{{cidade.nome}}</ion-option>
       </ion-select>
     </ion-item>
-    <button ion-button block type="submit">Criar Conta</button>
+    <button [disabled]="formGroup.invalid" ion-button block type="submit">Criar Conta</button>
   </form>
 </ion-content>
